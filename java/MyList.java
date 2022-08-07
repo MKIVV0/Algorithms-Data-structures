@@ -29,8 +29,8 @@ public class MyList<Item> {
     * Time complexity: O(1) = Θ(1) = Ω(1)
     * @param l list
     */
-    public boolean isEmpty(MyList l){
-        return l == null;
+    public boolean isEmpty(){
+        return first == null;
     }
 
     /*
