@@ -16,8 +16,10 @@ public class MyStack <Item>{
     private int N;
 
     /*
-    * Represents a node
-    */
+     * the class Node represents a single frame, which has
+     * as fields an item of a generic type Item and a reference
+     * of type Node to the next frame
+     */
     private class Node {
         Item item;
         Node next;
