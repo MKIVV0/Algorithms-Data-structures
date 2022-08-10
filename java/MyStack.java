@@ -1,3 +1,8 @@
+/*
+ * @author Matteo Huang
+ * My implementation of the stack data structure
+ */
+
 public class MyStack <Item>{
 
     /*
