@@ -29,6 +29,7 @@ public class MyStack <Item>{
     * the method isEmpty() checks whether the stack is empty
     * Time complexity: O(1) = Θ(1) = Ω(1)
     * @param void
+    * @return top == null the state of the stack
     */
     public boolean isEmpty() {
         return top == null;
@@ -38,6 +39,7 @@ public class MyStack <Item>{
      * the method isEmpty() returns the size of the stack
      * Time complexity: O(1) = Θ(1) = Ω(1)
      * @param void
+     * @return N the size of the stack
      */
     public int size(){
         return N;
@@ -47,6 +49,7 @@ public class MyStack <Item>{
      * the method top() returns the top frame
      * Time complexity: O(1) = Θ(1) = Ω(1)
      * @param void
+     * @return top.item the top frame's item
      */
     public Item top(){
         if (isEmpty()) return null;
@@ -70,11 +73,15 @@ public class MyStack <Item>{
      * the method pop() pops the top frame from the stack
      * Time complexity: O(1) = Θ(1) = Ω(1)
      * @param void
+     * @return item the popped frame's item
      */
-    public void pop(){
-        if (isEmpty()) return;
+    public Item pop(){
+        if (isEmpty()) return null;
+        Item item = top.item;
         top = top.next;
         N--;
+
+        return item;
     }
 
     /*
