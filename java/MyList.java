@@ -72,6 +72,7 @@ public class MyList<Item> {
         }
         N++;
     }
+
     /*
      * the method delete() deletes an element at position i
      * Time Complexity: O(1); Θ(n); Ω(n)
