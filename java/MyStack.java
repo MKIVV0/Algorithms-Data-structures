@@ -36,8 +36,8 @@ public class MyStack <Item>{
     }
 
     /*
-     * the method isEmpty() returns the size of the stack
-     * Time complexity: O(1) = Θ(1) = Ω(1)
+     * the method size() returns the stack's size
+     * Time Complexity: O(1) = Θ(1) = Ω(1)
      * @param void
      * @return N the size of the stack
      */
