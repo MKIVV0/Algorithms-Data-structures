@@ -1,4 +1,4 @@
-# Algorithms-Data-structures
+# Algorithms & Data Structures
 Classic algorithms and data structures are treated.
 
  # Description
