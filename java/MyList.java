@@ -27,7 +27,8 @@ public class MyList<Item> {
     /*
     * the method isEmpty() checks whether the list is empty
     * Time complexity: O(1) = Θ(1) = Ω(1)
-    * @param l list
+    * @param void
+    * @return first == null the state of the list
     */
     public boolean isEmpty(){
         return first == null;
@@ -37,6 +38,7 @@ public class MyList<Item> {
     * the method length() returns the list's length
     * Time Complexity: O(1) = Θ(1) = Ω(1)
     * @param void
+    * @return N the size of the list
     */
     public int length(){
         return N;
@@ -70,7 +72,6 @@ public class MyList<Item> {
         }
         N++;
     }
-
     /*
      * the method delete() deletes an element at position i
      * Time Complexity: O(1); Θ(n); Ω(n)
