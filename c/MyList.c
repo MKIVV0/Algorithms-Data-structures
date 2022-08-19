@@ -46,6 +46,13 @@ int insert(NODE* list, int idx, ITEM item) {
 	return 0;
 }
 
+int delete(NODE* list, int idx) {
+	if (list == NULL) return -1;
+
+
+	return 0;
+}
+
 int printList(NODE* list) {
 	NODE* curr = list;
 	if (curr == NULL) return -1;
@@ -57,6 +64,8 @@ int printList(NODE* list) {
 		curr = curr->next;
 	}
 	printf("\n");
+
+	return 0;
 }
 
 int main() {
@@ -64,6 +73,8 @@ int main() {
 	insert(list, 1, 1);
 	insert(list, 2, 2);
     insert(list, 2, 10);
+	printList(list);
+	delete(list, 1);
 	printList(list);
 	return 0;
 }
