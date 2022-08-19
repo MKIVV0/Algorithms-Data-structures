@@ -19,6 +19,19 @@ NODE* initList(ITEM item) {
 	return tmp;
 }
 
+int isEmpty(NODE* list) {
+	return list == NULL;
+}
+
+int length(NODE* list) {
+	int n = 0;
+	while (list != NULL) {
+		n++;
+		list = list->next;
+	}
+	return n;
+}
+
 // Corretto
 int insert(NODE* list, int idx, ITEM item) {
 	if (list == NULL) return -1;
@@ -93,6 +106,7 @@ int main() {
     insert(list, 3, 10);
 	insert(list, 0, -1);
 	printList(list);
+	printf("\nlist length: %d\n \nlist empty? %d\n", length(list), isEmpty(list));
 	delete(list, 0);
 	printf("\nPRINT POST DELETE\n");
 	printList(list);
