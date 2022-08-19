@@ -10,29 +10,38 @@ struct Node {
 };
 
 /*
- * initList(void) returns a pointer dynamically allocated to a fake node
+ * initList(item) returns a pointer dynamically allocated to a node
  */
-NODE* initList(void) {
+NODE* initList(ITEM item) {
 	NODE* tmp = (NODE*)malloc(sizeof(NODE));
-    tmp->item = 0;
+    tmp->item = item;
 	tmp->next = NULL;
 	return tmp;
 }
 
+// Corretto
 int insert(NODE* list, int idx, ITEM item) {
-	if (idx == 0 || list == NULL) return -1;
+	if (list == NULL) return -1;
 	
 	int i = 0;
 
-	while ((i < idx - 1) && (list != NULL)) {
-		i++;
-		list = list->next;
-	}
+	if (idx == 0) {
+		NODE* another = (NODE*)malloc(sizeof(NODE));
+		another->item = list->item;
+		another->next = list->next;
+		list->item = item;
+		list->next = another;
+	} else {
+		while ((i < idx - 1) && (list != NULL)) {
+			i++;
+			list = list->next;
+		}
 
-	NODE* tmp = (NODE*)malloc(sizeof(NODE));
-	tmp->next = list->next;
-	tmp->item = item;
-	list->next = tmp;
+		NODE* tmp = (NODE*)malloc(sizeof(NODE));
+		tmp->next = list->next;
+		tmp->item = item;
+		list->next = tmp;
+	}
 	
 	return 0;
 }
@@ -51,7 +60,7 @@ int printList(NODE* list) {
 }
 
 int main() {
-	NODE* list = initList();
+	NODE* list = initList(0);
 	insert(list, 1, 1);
 	insert(list, 2, 2);
     insert(list, 2, 10);
