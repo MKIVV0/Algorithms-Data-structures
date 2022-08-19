@@ -37,8 +37,8 @@ int insert(NODE* list, int idx, ITEM item) {
 			list = list->next;
 		}
 
-		tmp->next = list->next;
 		tmp->item = item;
+		tmp->next = list->next;
 		list->next = tmp;
 	}
 	
@@ -50,7 +50,11 @@ int delete(NODE* list, int idx) {
 
 	if (idx == 0) {
 		NODE* tmp = list;
+		printf("Assigned %d to tmp\n", tmp->item);
 		list = list->next;
+		tmp->next = NULL;
+		printf("Moved list pointer to the next node: %d\n", list->item);
+		printf("Current value of node pointed from tmp: %d\n", tmp->item);
 		free(tmp);
 	} else {
 		int i = 0;
@@ -92,6 +96,8 @@ int main() {
 	delete(list, 0);
 	printf("\nPRINT POST DELETE\n");
 	printList(list);
+
+	printf("\n%d\n", list->next->next->item);
 	//printf("\n%d\n", list->next->next->item);
 	
 	/* FUNZIONANTE (LA STESSA COSA LA FA IL METODO delete(), MA NON VA NIENTE)
