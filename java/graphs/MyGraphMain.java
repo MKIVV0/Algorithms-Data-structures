@@ -39,5 +39,8 @@ public class MyGraphMain {
         g4.addEdge(3,1);
 
         g4.printGraph();
+
+        g4.BFS(2);
+        //g4.DFS(2);
     }
 }
