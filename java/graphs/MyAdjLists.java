@@ -2,6 +2,7 @@ package graphs;
 
 import java.util.LinkedList;
 import java.util.ArrayList;
+import java.util.concurrent.LinkedBlockingDeque;
 
 import basicDS.MyLinkedList;
 import basicDS.MyQueue;
@@ -83,47 +84,38 @@ public class MyAdjLists extends MyGraph{
         System.out.println("\n");
     }
 
-    // Shoould be mostly correct
-    public void BFS(int node) {
+    // Correct
+    public void breadthFirstSearch(int node) {
         MyQueue<Integer> q = new MyQueue<>();
-        MyLinkedList<Edge> list = new MyLinkedList<>();
         int[] visited = new int[this.adjList.size()];
-        q.enqueue(node);
-        visited[node] = 1; // visited
 
-        // initializes the visited array
-        for (int i = 0; i < this.adjList.size(); i++) {
-            int v = this.adjList.get(i).get(0);
-            if (v != node)
-                visited[v] = 0; // 0 for unvisited nodes
-        }
+        q.enqueue(node);
+        visited[node] = 1;
+        for (int i : visited)
+            if (i != node)
+                visited[i] = 0;
 
         while (!q.isEmpty()) {
             int v = q.head();
+            int vIndex = 0;
+            // Gets the index of v
+            for (int i = 0; i < this.adjList.size(); i++)
+                if (this.adjList.get(i).get(0) == v)
+                    vIndex = i;
+            LinkedList<Integer> tmp = this.adjList.get(vIndex);
+
             q.dequeue();
-            System.err.println(v + " visited");
-            for (int j = 0; j < this.adjList.get(v).size(); j++) {
-                int w = this.adjList.get(v).get(j);
-                if (visited[w] == 0) {
-                    visited[w] = 1; // 1 for visited nodes
-                    q.enqueue(w);
-                    list.insert(new Edge(v, w), 0); // inserimento in testa
+            System.out.println( v + " visited");
+            for (int i = 0; i < tmp.size(); i++) {
+                if (visited[tmp.get(i)] == 0){
+                    q.enqueue(tmp.get(i));
+                    visited[tmp.get(i)] = 1;
                 }
             }
         }
     }
 
-    public void DFS(int v) {
-        MyLinkedList<Edge> list = new MyLinkedList<>();
-        int[] visited = new int[this.adjList.size()];
-        System.err.println(v + " visited");
-        visited[v] = 1;
-        for (int i = 0; i < this.adjList.get(v).size(); i++) {
-            int w = this.adjList.get(v).get(i);
-            if (visited[w] == 0) {
-                list.insert(new Edge(v, w), 1);
-                DFS(w);
-            }
-        }
+    public void depthFirstSearch() {
+
     }
 }

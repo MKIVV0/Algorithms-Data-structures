@@ -28,19 +28,35 @@ public class MyGraphMain {
 
         g3.printGraph();
 
-        MyAdjLists g4 = new MyAdjLists("DIRECTED");
+        MyAdjLists g4 = new MyAdjLists("UNDIRECTED");
         g4.addNode(0);
         g4.addNode(1);
         g4.addNode(2);
         g4.addNode(3);
+        g4.addNode(4);
+        g4.addNode(5);
+        g4.addNode(6);
+        g4.addNode(7);
+        g4.addNode(8);
+        g4.addNode(9);
+        g4.addNode(10);
+
 
         g4.addEdge(1,2);
         g4.addEdge(2,3);
         g4.addEdge(3,1);
+        g4.addEdge(3,4);
+        g4.addEdge(5,6);
+        g4.addEdge(5,4);
+        g4.addEdge(2,8);
+        g4.addEdge(8,10);
+        g4.addEdge(9,10);
+        g4.addEdge(0,8);
+        g4.addEdge(7,5);
 
         g4.printGraph();
 
-        g4.BFS(2);
+        g4.breadthFirstSearch(7);
         //g4.DFS(2);
     }
 }
