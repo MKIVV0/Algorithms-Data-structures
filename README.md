@@ -7,7 +7,7 @@ Classic algorithms and data structures are treated.
  
  The algorithms/data structures implemented are strictly related to what I treated in the course, so no extra 
  work on extra topics has been done. That is beacuse the syllabus is already very dense, hence the workload is heavy.
- Fore example, the breadth first search and the depth first search algorithms are only implemented for graph represented
+ For example, the breadth first search and the depth first search algorithms are only implemented for graph represented
  by adjacency lists, because that's what the professor explained in that specific lecture (and is likely to ask in the exam).
  
  Every piece of code was implemented with the aim of understanding the topics treated during the course and in 
