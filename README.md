@@ -16,6 +16,8 @@ Classic algorithms and data structures are treated.
  - Concatenated List (java, c)
  - Stack (java)
  - Queue (java)
+ - Graph with adjacency matrix (java)
+ - Graph with adjacency lists (java)
 
 # Implemented Algorithms
 - Breadth First Search (java - myAdjList.java file)
