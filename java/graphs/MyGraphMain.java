@@ -56,7 +56,17 @@ public class MyGraphMain {
 
         g4.printGraph();
 
+        System.out.println("- Breadth First Search (traversing the entire graph):");
         g4.breadthFirstSearch(7);
-        //g4.DFS(2);
+        System.out.println("\n");
+        System.out.println("- Breadth First Search (traversing from a source to a destination):");
+        g4.breadthFirstSearch(7, 10);
+        System.out.println("\n");
+        System.out.println("- Recursive Depth First Search (traversing the entire graph):");
+        g4.initializeVisitedArray();
+        g4.recDepthFirstSearch(1);
+        System.out.println("\n");
+        System.out.println("- Iterative Depth First Search (traversing the entire graph):");
+        g4.iterDepthFirstSearch(2);
     }
 }

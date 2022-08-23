@@ -6,6 +6,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 import basicDS.MyLinkedList;
 import basicDS.MyQueue;
+import basicDS.MyStack;
 
 public class MyAdjLists extends MyGraph{
     protected class Edge {
@@ -22,6 +23,8 @@ public class MyAdjLists extends MyGraph{
      */
     private ArrayList<LinkedList<Integer>> adjList;
 
+    private int[] visited;
+
     public MyAdjLists(String type) {
         super(type);
         this.adjList = new ArrayList<>();
@@ -32,6 +35,7 @@ public class MyAdjLists extends MyGraph{
         curr.add(node);
         this.adjList.add(curr);
     }
+
     public void addEdge(int src, int dest) {
         if (this.getType() == MyGraphTypes.UNDIRECTED) {
             for (int i = 0; i < this.adjList.size(); i++) {
@@ -84,7 +88,12 @@ public class MyAdjLists extends MyGraph{
         System.out.println("\n");
     }
 
-    // Correct
+    /*
+     * the method breadthFirstSearch() traverses the entire graph by breadth from an entry point
+     * Space complexity: Θ(n)
+     * Time complexity: Θ(n + m) -> initializing the array + visiting every node * reading the adjacency list
+     * @param node
+     */
     public void breadthFirstSearch(int node) {
         MyQueue<Integer> q = new MyQueue<>();
         int[] visited = new int[this.adjList.size()];
@@ -115,7 +124,98 @@ public class MyAdjLists extends MyGraph{
         }
     }
 
-    public void depthFirstSearch() {
+    /*
+     * the method breadthFirstSearch() traverses the graph by breadth from an entry point to a destination
+     * Space complexity: Θ(n)
+     * Time complexity: Θ(n + m) -> initializing the array + visiting every node * reading the adjacency list
+     * @param src, dst
+     */
+    public void breadthFirstSearch(int src, int dst) {
+        MyQueue<Integer> q = new MyQueue<>();
+        int[] visited = new int[this.adjList.size()];
 
+        q.enqueue(src);
+        visited[src] = 1;
+        for (int i : visited)
+            if (i != src)
+                visited[i] = 0;
+
+        while (!q.isEmpty()) {
+            int v = q.head();
+            int vIndex = 0;
+            // Gets the index of v
+            for (int i = 0; i < this.adjList.size(); i++)
+                if (this.adjList.get(i).get(0) == v)
+                    vIndex = i;
+            LinkedList<Integer> tmp = this.adjList.get(vIndex);
+
+            q.dequeue();
+
+            System.out.println( v + " visited");
+            if (v == dst) break;
+            for (int i = 0; i < tmp.size(); i++) {
+                if (visited[tmp.get(i)] == 0){
+                    q.enqueue(tmp.get(i));
+                    visited[tmp.get(i)] = 1;
+                    if (tmp.get(i) == dst) break;
+                }
+            }
+        }
+    }
+
+    public void recDepthFirstSearch(int node) {
+        System.out.println(node + " visited");
+        this.visited[node] = 1;
+
+        //to get node's index
+        int nodeIndex = 0;
+        for (int i = 0; i < this.adjList.size(); i++)
+            if (this.adjList.get(i).get(0) == node) {
+                nodeIndex = i;
+                break;
+            }
+        LinkedList<Integer> w = this.adjList.get(nodeIndex);
+
+        for (int i = 0; i < w.size(); i++)
+            if (this.visited[w.get(i)] == 0)
+                recDepthFirstSearch(w.get(i));
+    }
+
+    // Uniquely for the recursive version of depth first search
+    // It cannot be used in the constructor, because the list's
+    // length is initially 0.
+    public void initializeVisitedArray() {
+        this.visited = new int[this.adjList.size()];
+        for (int i = 0; i < this.adjList.size(); i++)
+            this.visited[i] = 0;
+    }
+
+    // TO REVIEW
+    public void iterDepthFirstSearch(int node) {
+        MyStack<Integer> s = new MyStack<>();
+        int[] visited = new int[this.adjList.size()];
+
+        s.push(node);
+
+        while (!s.isEmpty()) {
+            node = s.pop();
+            if (visited[node] == 0) {
+                visited[node] = 1;
+                System.out.println(node + " visited");
+            }
+
+            //to get node's index
+            int nodeIndex = 0;
+            for (int i = 0; i < this.adjList.size(); i++)
+                if (this.adjList.get(i).get(0) == node) {
+                    nodeIndex = i;
+                    break;
+                }
+
+            LinkedList<Integer> w = this.adjList.get(nodeIndex);
+            for (int i = 0; i < w.size(); i++)
+                if (visited[w.get(i)] == 0)
+                    s.push(w.get(i));
+        }
     }
 }
