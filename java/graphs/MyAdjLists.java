@@ -2,9 +2,7 @@ package graphs;
 
 import java.util.LinkedList;
 import java.util.ArrayList;
-import java.util.concurrent.LinkedBlockingDeque;
 
-import basicDS.MyLinkedList;
 import basicDS.MyQueue;
 import basicDS.MyStack;
 
@@ -190,7 +188,12 @@ public class MyAdjLists extends MyGraph{
             this.visited[i] = 0;
     }
 
-    // Correct
+    /*
+     * the method iterDepthFirstSearch() traverses the entire graph by depth
+     * Space complexity: Θ(n)
+     * Time complexity: Θ(n + m) -> visiting n nodes + for every node * reading the adjacency list
+     * @param src, dst
+     */
     public void iterDepthFirstSearch(int node) {
         MyStack<Integer> s = new MyStack<>();
         int[] visited = new int[this.adjList.size()];
