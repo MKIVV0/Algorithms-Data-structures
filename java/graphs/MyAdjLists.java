@@ -190,7 +190,7 @@ public class MyAdjLists extends MyGraph{
             this.visited[i] = 0;
     }
 
-    // TO REVIEW
+    // Correct
     public void iterDepthFirstSearch(int node) {
         MyStack<Integer> s = new MyStack<>();
         int[] visited = new int[this.adjList.size()];
