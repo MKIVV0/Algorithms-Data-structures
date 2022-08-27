@@ -13,7 +13,7 @@ Classic algorithms and data structures are treated.
  Every piece of code was implemented with the aim of understanding the topics treated during the course and in 
  preparation for the exam.
  
- NB: the various implementations might not be the best way to code each algorithms/data structures.
+ NB: the various implementations might not be the best way to code each algorithm/data structure.
  
  # Implemented Data Structures
  - Concatenated List (java, c)
