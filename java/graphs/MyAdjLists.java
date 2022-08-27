@@ -161,6 +161,34 @@ public class MyAdjLists extends MyGraph{
         }
     }
 
+    public void altBFS(int src) {
+        MyQueue<Integer> q = new MyQueue();
+        boolean[] visited = new boolean[this.adjList.size()];
+        for (int i = 0; i < visited.length; i++)
+            visited[i] = false;
+
+        q.enqueue(src);
+        while (!q.isEmpty()) {
+            int v = q.dequeue();
+            if (!visited[v]) {
+                visited[v] = true;
+                System.err.println(v + " visited");
+            }
+
+            int wIndex = 0;
+            for (int i = 0; i < this.adjList.size(); i++)
+                if (this.adjList.get(i).get(0) == v)
+                    wIndex = i;
+
+            LinkedList<Integer> tmp = this.adjList.get(wIndex);
+            for (int i = 0; i < tmp.size(); i++) {
+                if (!visited[tmp.get(i)]) {
+                    q.enqueue(tmp.get(i));
+                }
+            }
+        }
+    }
+
     public void recDepthFirstSearch(int node) {
         System.out.println(node + " visited");
         this.visited[node] = 1;
