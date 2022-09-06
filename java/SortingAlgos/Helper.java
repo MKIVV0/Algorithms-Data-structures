@@ -22,7 +22,8 @@ public class Helper {
         //classicSorts.selectionSort(a);
         //classicSorts.bubbleSort(a);
         //classicSorts.selectionSort(a);
-        divideEtImperaSorts.quickSort(a, lo, hi);
+        //divideEtImperaSorts.quickSort(a, lo, hi);
+        HeapSort.heapSort(a);
         for (int x : a)
             System.out.print(x + " ");
     }
