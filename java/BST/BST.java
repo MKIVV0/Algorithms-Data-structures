@@ -114,6 +114,36 @@ public class BST {
         }
     }
 
+    public void iterPostOrder(Node root) {
+        MyStack<Node> sn = new MyStack<>();
+        MyStack<Boolean> sb = new MyStack<>();
+        Boolean f;
+
+        if (root != null) {
+            sn.push(root);
+            sb.push(true);
+        }
+
+        while (!sn.isEmpty()) {
+            root = sn.pop();
+            f = sb.pop();
+            if (f == true) {
+                sn.push(root);
+                sb.push(false);
+                if (root.right != null) {
+                    sn.push(root.right);
+                    sb.push(true);
+                }
+                if (root.left != null) {
+                    sn.push(root.left);
+                    sb.push(true);
+                }
+            } else {
+                root.visit();
+            }
+        }
+    }
+
     public static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
     }
@@ -141,5 +171,8 @@ public class BST {
         System.out.println("\n- In order iterative: ");
         bst.iterInOrder(root);
         System.out.println("\n- less: " + less(2, 3));
+
+        System.out.println("\n- Post order iterative: ");
+        bst.iterPostOrder(root);
     }
 }
